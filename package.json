@@ -1,0 +1,68 @@
+{
+  "name": "@comfyorg/quad-wireframe-three",
+  "version": "0.1.0",
+  "description": "Polygon (quad/n-gon) topology for three.js meshes \u2014 read face sizes from binary FBX, rebuild quads from triangle soup with Blender's Tris-to-Quads algorithm, and draw wireframes without triangulation diagonals.",
+  "keywords": [
+    "three",
+    "three.js",
+    "wireframe",
+    "quad",
+    "quads",
+    "polygon",
+    "topology",
+    "fbx",
+    "tris-to-quads",
+    "blender",
+    "comfyui"
+  ],
+  "author": {
+    "name": "Terry Jia",
+    "email": "terry@comfy.org"
+  },
+  "license": "MIT",
+  "homepage": "https://comfy.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Comfy-Org/quad-wireframe-three.git"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "test:coverage": "node --import tsx --test --experimental-test-coverage --test-coverage-include=\"src/**\" test/*.test.ts",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "peerDependencies": {
+    "three": ">=0.160.0"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "@types/three": "^0.184.1",
+    "three": "^0.184.0",
+    "tsx": "^4.22.0",
+    "typescript": "^6.0.3"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
